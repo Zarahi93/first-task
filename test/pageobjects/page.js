@@ -10,7 +10,7 @@ export default class Page {
     * @param path path of the sub page (e.g. /path/to/page.html)
     */
     open (path) {
-        return browser.url(`https://pastebin.com/${path}`)
+        return browser.url(`https://pastebin.com/`)
     };
 
     get textAreaId(){
@@ -28,4 +28,12 @@ export default class Page {
     get btnCreateNewPaste(){
         return $('button[type="submit"]');
     };
+
+async newPaste(code, pasteTitle){
+    await this.textAreaId.setValue(code);
+    await this.selectPasteExpiration.click();
+    await this.inputName.setValue(pasteTitle);
+    await this.btnCreateNewPaste.click();
+};
+
 }
