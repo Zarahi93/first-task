@@ -6,12 +6,17 @@ import { browser } from '@wdio/globals'
 */
 export default class Page {
    
+    async open (){
+        await browser.url('https://pastebin.com/');
+    }
+
     get textAreaId(){
         return $('#postform-text');
     };
 
     get selectPasteExpiration(){
-        return $('option[value="10M"]');
+        const pasteExpiration = $('#postform-expiration');
+        return pasteExpiration.selectByAttribute('value', '10M');
     };
 
     get inputName(){
@@ -24,7 +29,7 @@ export default class Page {
 
 async newPaste(code, pasteTitle){
     await this.textAreaId.setValue(code);
-    await this.selectPasteExpiration.click();
+    await this.selectPasteExpiration().click();
     await this.inputName.setValue(pasteTitle);
     await this.btnCreateNewPaste.click();
 };
