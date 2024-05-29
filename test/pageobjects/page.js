@@ -14,10 +14,9 @@ export default class Page {
         return $('#postform-text');
     };
 
-    get selectPasteExpiration(){
-        const pasteExpiration = $('#postform-expiration');
-        return pasteExpiration.selectByAttribute('value', '10M');
-    };
+   get selectPasteExpiration(){
+       return $('#postform-expiration');
+   };
 
     get inputName(){
         return $('#postform-name');
@@ -29,7 +28,7 @@ export default class Page {
 
 async newPaste(code, pasteTitle){
     await this.textAreaId.setValue(code);
-    await this.selectPasteExpiration().click();
+    (await this.selectPasteExpiration).selectByAttribute('value','10M');
     await this.inputName.setValue(pasteTitle);
     await this.btnCreateNewPaste.click();
 };

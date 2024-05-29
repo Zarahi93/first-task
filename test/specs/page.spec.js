@@ -6,6 +6,7 @@ describe('Create New Paste', () => {
     it('should create a new paste', async () => {
         await browser.deleteCookies()
         await pastePage.open();
+        await browser.pause(2000);
         await pastePage.newPaste('Hello from WebDriver', 'helloweb');
     })
 })
