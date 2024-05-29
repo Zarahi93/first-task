@@ -1,7 +1,7 @@
 import Page from '../pageobjects/page.js';
 const pastePage = new Page;
 
-describe('Create New Paste', () => {
+describe('Create new paste', () => {
 
     it('should create a new paste', async () => {
         await browser.deleteCookies()
